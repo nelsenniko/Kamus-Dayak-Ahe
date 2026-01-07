@@ -1,4 +1,4 @@
-# 📚 Kamus Digital Dayak Kanayatn / Ahe
+# 📚 Aplikasi Kamus Dayak Ahe / Kanayatn 
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/nelsenniko/Kamus-Dayak-Ahe?style=for-the-badge&color=gold)
 ![GitHub forks](https://img.shields.io/github/forks/nelsenniko/Kamus-Dayak-Ahe?style=for-the-badge&color=blue)
