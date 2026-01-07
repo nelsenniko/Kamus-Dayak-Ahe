@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0f172a">
+    <title>NELSEN AI — Ultra Edition</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div id="app-loader">
+        <div class="loader-content">
+            <div class="logo-pulse">
+                🤖
+            </div>
+            <p>
+                NELSEN
+            </p>
+        </div>
+    </div>
+
+    <div class="app-wrapper">
+        <header class="ultra-header">
+            <div class="brand-group">
+                <div class="avatar-container">
+                    <img src="https://ui-avatars.com/api/?name=Nelsen&background=6366f1&color=fff" alt="Nelsen">
+                    <div class="status-indicator"></div>
+                </div>
+                <div class="text-group">
+                    <h1>Nelsen</h1>
+                    <small>Kamus Dayak — Ahe</small>
+                </div>
+            </div>
+            <button id="themeSwitcher" class="glass-btn"><span id="theme-icon">☀️</span></button>
+        </header>
+
+        <div id="installPrompt" class="premium-banner" style="display: none;">
+            <p>
+                Pasang Nelsen di layar utama Anda
+            </p>
+            <button id="installBtn">INSTALL</button>
+        </div>
+
+        <main id="chatDisplay" class="chat-area"></main>
+
+        <footer class="input-section">
+            <div id="suggestArea" class="suggestion-tray"></div>
+            <div class="input-glass-box">
+                <input type="text" id="userInput" placeholder="Ketik kata Indo atau Dayak..." autocomplete="off">
+                <button id="sendBtn">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" /></svg>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').then(reg => {
+                    console.log("Service Worker registered:", reg);
+                    if (reg.waiting) reg.waiting.postMessage('skipWaiting');
+                });
+            });
+
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                console.log("Versi baru tersedia, reload otomatis...");
+                window.location.reload();
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+:root {
+    --bg: #0f172a;
+    --surface: rgba(30, 41, 59, 0.7);
+    --primary: #6366f1;
+    --text: #f8fafc;
+    --text-dim: #94a3b8;
+    --bubble-ai: rgba(51, 65, 85, 0.5);
+    --bubble-user: linear-gradient(135deg, #6366f1, #4f46e5);
+}
+
+.light-theme {
+    --bg: #f8fafc;
+    --surface: rgba(255, 255, 255, 0.8);
+    --primary: #4f46e5;
+    --text: #0f172a;
+    --text-dim: #64748b;
+    --bubble-ai: #e2e8f0;
+    --bubble-user: linear-gradient(135deg, #4f46e5, #4338ca);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+body { background: var(--bg); color: var(--text); height: 100dvh; overflow: hidden; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+
+.app-wrapper { max-width: 500px; margin: 0 auto; height: 100%; display: flex; flex-direction: column; position: relative; }
+
+/* Header Glassmorphism */
+.ultra-header { padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+.brand-group { display: flex; align-items: center; gap: 12px; }
+.avatar-container { position: relative; }
+.avatar-container img { width: 42px; height: 42px; border-radius: 14px; border: 2px solid var(--primary); }
+.status-indicator { position: absolute; bottom: -2px; right: -2px; width: 12px; height: 12px; background: #10b981; border: 2px solid var(--bg); border-radius: 50%; }
+.text-group h1 { font-size: 1rem; font-weight: 800; letter-spacing: -0.5px; }
+.text-group small { color: var(--text-dim); font-size: 0.75rem; }
+
+/* Chat Area */
+.chat-area { flex: 1; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; scroll-behavior: smooth; }
+.chat-area::-webkit-scrollbar { width: 0; }
+
+.bubble { max-width: 85%; padding: 0.9rem 1.2rem; border-radius: 20px; font-size: 0.95rem; line-height: 1.5; animation: pop 0.3s ease-out; }
+.bubble.ai { background: var(--bubble-ai); align-self: flex-start; border-bottom-left-radius: 5px; backdrop-filter: blur(10px); }
+.bubble.user { background: var(--bubble-user); color: white; align-self: flex-end; border-bottom-right-radius: 5px; box-shadow: 0 10px 15px -5px rgba(99, 102, 241, 0.4); }
+
+/* Input Section */
+.input-section { padding: 1rem 1.5rem 2rem; background: transparent; }
+.input-glass-box { background: var(--surface); backdrop-filter: blur(20px); padding: 6px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; }
+input { flex: 1; background: transparent; border: none; padding: 10px 15px; color: var(--text); outline: none; font-size: 1rem; }
+#sendBtn { background: var(--primary); color: white; border: none; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; }
+
+/* UI Extras */
+.suggestion-tray { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; scrollbar-width: none; }
+.suggestion-tray div { background: var(--surface); padding: 6px 14px; border-radius: 15px; font-size: 0.8rem; white-space: nowrap; border: 1px solid rgba(255,255,255,0.05); }
+
+@keyframes pop { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+
+#app-loader { position: fixed; inset: 0; background: #0f172a; z-index: 1000; display: grid; place-items: center; transition: 0.5s; }
+.logo-pulse { font-size: 3rem; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 0.8; } }
